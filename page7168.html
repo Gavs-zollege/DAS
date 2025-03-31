@@ -30,8 +30,6 @@
 <script type='text/javascript' src='trivantis-questions.js'></script>
 <script type='text/javascript' src='speed.js'></script>
 <script type='text/javascript' src='trivantis-buttontracking.js'></script>
-<script type='text/javascript' src='apiwrapper11.js'></script>
-<script type='text/javascript' src='scofunctions.js'></script>
 <script type='text/javascript' src='aria-utils.js'></script>
 <script type='text/javascript' src='trivantis-dialog.js'></script>
 <script type='text/javascript' src='trivantis-strings.js'></script>
@@ -62,11 +60,7 @@ function initGEV(state, swipeLeft, swipeRight) {
 if ( !is.min )
 	document.write("Your browser does not support dynamic html. Please download a current version of either <a href='http://www.microsoft.com/ie/'>Microsoft Internet Explorer or Edge</a> or <a href='http://www.apple.com/safari/download/'>Safari</a> or <a href='http://www.mozilla.com/firefox/'>Mozilla Firefox</a> and try visiting our site again. Thank You.<br/><br/>")
 
-var bInitSCORM = loadPage()
-var startDate = readVariable('TrivantisSCORMTimer', 0)
 var VarQuestion_7169 = new Variable( 'VarQuestion_7169', '', 0, 0, null, null, '', f );
-var AICC_Student_Name = new Variable( 'AICC_Student_Name', '0', 0, 0, 'scorm', null, ''  );
-var AICC_Lesson_Location = new Variable( 'AICC_Lesson_Location', '0', 0, 0, 'scorm', null, ''  );
 var VarTriMuteAllFLV = new Variable( 'VarTriMuteAllFLV', '', 0, 0, null, null, ''  );
 var bRcdTitle = true;
 var pgWidth_phonePort = 480;
@@ -86,35 +80,15 @@ var forceExitPage = false;
 var trivInTest = true;
 
 var viewOverrideMap = {};
+viewOverrideMap["PhonePortrait"] = "Desktop";
+viewOverrideMap["PhoneLandscape"] = "Desktop";
+viewOverrideMap["TabletPortrait"] = "Desktop";
+viewOverrideMap["TabletLandscape"] = "Desktop";
 
 function init_page()
 {
 	if ( is.min )
 	{
-		var titleMgr = getTitleMgrHandle()
-		if( titleMgr ) {
-		  if( !titleMgr.loadTest( '_tobj6994', 'test6994', 'page7168.html' )) {
-		    var gotoPage = titleMgr.cancelTest( 'test6994' )
-		    if( gotoPage ) trivExitPage( gotoPage, false )
-		  }
-		}
-		if( parent.document != document) parent.document.title=document.title
-		if( bInitSCORM )
-		{
-		  var oldLoc = AICC_Lesson_Location.getValue()
-		  if( oldLoc && oldLoc.indexOf( '.' ) > 0 && oldLoc != 'page7168.html' && oldLoc != 'A001index.html' )
-		  {
-		    var bmCallback = function(go){
-		      if(go){
-		       saveVariable( 'TrivantisEPS', 'T');
-		       ObjLayerActionGoTo( oldLoc );
-		    }};
-		    var mbconf = new jsTrivDlgMsgBox( 'prevLocation7168', 'DAP Week 1','You have previously been in this lesson. Would you like to return to the last visited location in the lesson?', 1, function(e,rtn){ bmCallback(rtn==0)} ); mbconf.create();
-		  }
-		}
-
-		if( window.name.indexOf( 'Trivantis_' ) == -1 )
-		  AICC_Lesson_Location.set( 'page7168.html' )
 		triv$(getDisplayWindow()).scroll(function(e) { onWindowScroll(e); });
 		triv$(getDisplayWindow()).resize(function(e) { onWindowScroll(e); });
 		trivCenterPage = true;
@@ -131,15 +105,7 @@ function init_page()
 		trivPage.actionMute();
 	}
 }
-
-function finish() {
-    if (window.finishCalled) return;
-    window.finishCalled = true;
-    unloadPage(true,'')
-}
-
 var theWin = (window.myTop || window);
-theWin.onbeforeunload = function(){ if (readVariable('TrivantisEPS', 'F') != 'T' && !theWin.noPromptOnUnload ) return ''; finish();};
 if (theWin.pagehideHandler)
     theWin.removeEventListener('pagehide', theWin.pagehideHandler);
 theWin.pagehideHandler = function(ev) { finish(); }
@@ -224,11 +190,7 @@ pageRClick = n;
 pageKey = n;
 
 function cancelTest() {
-  var titleMgr = getTitleMgrHandle();
-  if( titleMgr ) {
-    var gotoPage = titleMgr.cancelTest( 'test6994' );
-    if( gotoPage && gotoPage != '' ) trivExitPage( gotoPage, false );
-  }
+    trivExitPage( 'page7021.html', false );
 }
 
 

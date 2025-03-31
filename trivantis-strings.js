@@ -64,7 +64,7 @@ var trivstrPopBlock = 'Please disable any popup blockers.';
 
 /* publish options
 
-Publish Type: SCORM 
+Publish Type: HTML 
 Create ALT tags for images and buttons: Yes 
 Convert page names to short ID-based names: Yes 
 Use Lightbox pop ups: Yes 
@@ -76,7 +76,7 @@ Scale content to fill window: No
 Fit content to width: No 
 Scale content to fill mobile device view: Yes 
 
-{"bFTPTitle":0,"bCreateAltTags":true,"bPENSTitle":0,"bPartialPublish":false,"bCourseMillTitle":false,"bAICCTitle":false,"bSCORMTitle":true,"bSumTotalTitle":false,"bPWCTitle":false,"bMoodleTitle":false,"bWebCTTitle":false,"bCopyPlayer":true,"bPublishToRepository":false,"bPublishUpdated":true,"bIncTitleMgr":true,"dwParmFlags":1139296,"htmlIndexFile":"index.html","scaleLimitWidth":"","publishZipFile":"","strEncryptPassword":"","strIconFilename":"","strINI":"","iDebugOptions":31,"ftpParms":{"HostName":"","UserID":"","Password":"","InitialDir":"","transferMode":"passive"},"PENSParms":{"TargetSystemURL":"","UserID":"","Password":"","EmailAddr":"g.vidal@zollege.com"},"coursemillParms":{"Name":"","Course":"","Instructor":"","Password":"","Error":"","ErrorCode":0,"Version":0},"aiccParms":{"CourseCreator":"CourseCreator","CourseID":"CourseID","CourseSystem":"ELB Learning  Lectora Online v7.1.1(286)","CourseTitle":"DAP Week 1","CourseWebLocation":"tryoutgavs","CourseLevel":1,"CourseMaxFieldsCST":2,"CourseTotalAUs":1,"CourseTotalBlocks":0,"CourseVersion":"3.0.1","BehaviorMaxNormal":99,"CourseDescription":"tryoutgavs","bSameDomain":false,"bForceCloseContent":true,"bHandleInteractions":false,"bBookmarking":true,"bTrackProgress":false,"bUseAUValues":true,"CourseSystemID":"A001","DeveloperID":"DeveloperID","CourseType":"Lesson","MasteryScore":"75","MaxTimeAllowed":0,"strMTA":"","TimeLimitAction":0,"strDefaultMasteryScore":"75","strMaxScore":"100","bInteractionsTS":false,"RedirectorURL":""},"scormParms":{"Keywords":"","Version":65538},"bCreateZip":true,"bGeneratePageNames":true,"chkSaba":false}
+{"bFTPTitle":0,"bCreateAltTags":true,"bPENSTitle":false,"bPartialPublish":false,"bCourseMillTitle":false,"bAICCTitle":false,"bSCORMTitle":false,"bSumTotalTitle":false,"bPWCTitle":false,"bMoodleTitle":false,"bWebCTTitle":false,"bCopyPlayer":true,"bPublishToRepository":false,"bPublishUpdated":true,"bIncTitleMgr":false,"dwParmFlags":1139200,"htmlIndexFile":"index.html","scaleLimitWidth":"","publishZipFile":"","strEncryptPassword":"","strIconFilename":"","strINI":"","iDebugOptions":31,"ftpParms":{"HostName":"","UserID":"","Password":"","InitialDir":"","transferMode":"passive"},"PENSParms":{"ClientNamespace":"","TargetSystemURL":"","PensVersion":"","PackageType":"","PackageTypeFormat":"","PackageID":"","PackageURL":"","PackageURLExpiry":"","Client":"","UserID":"","Password":"","Receipt":"","Alerts":"","EmailAddr":""},"coursemillParms":{"Name":"","Course":"","Instructor":"","Password":"","Error":"","ErrorCode":0,"Version":0},"aiccParms":{"CourseCreator":"","CourseID":"","CourseSystem":"","CourseTitle":"","CourseWebLocation":"","CourseLevel":0,"CourseMaxFieldsCST":0,"CourseTotalAUs":0,"CourseTotalBlocks":0,"CourseVersion":"","BehaviorMaxNormal":0,"CourseDescription":"","bSameDomain":false,"bForceCloseContent":false,"bHandleInteractions":false,"bBookmarking":false,"bTrackProgress":false,"bUseAUValues":false,"CourseSystemID":"","DeveloperID":"","CourseType":"","MasteryScore":"","MaxTimeAllowed":0,"strMTA":"","TimeLimitAction":0,"strDefaultMasteryScore":"75","strMaxScore":"100"},"scormParms":{"Keywords":"","Version":0},"bGeneratePageNames":true,"chkSaba":false}
 
 */
 
