@@ -25,12 +25,12 @@ tts_audio6265.rcdData.att_Desktop =
 	stdHtml:	'<div id="sndSpacers" ></div><audio id="swftobj6265" name="swftobj6265" width="100%" height="100%" controls="controls" preload="none"><source type="audio/mpeg" src="media/Matthew_text_1741749379715.mp3" /></audio>',
 	iosHtml:	'undefined',
 	resource:	'media/Matthew_text_1741749379715.mp3',
-	arEvents:	[{name:'Event 1', value:'4700',proc:false,actItem:function(){{cleanupTitle(''); trivExitPage('ObjLayerActionExit()',false);} 
+	arEvents:	[{name:'Event 1', value:'4700',proc:false,actItem:function(){{trivScormQuit(true, '', true);} 
 		if ( typeof pF == 'function' ) pF();}}],
 	cwObj:		{
 		"name":	"Matthew_text_1741749379715"
 	},
-	objData:	{"a":[0,131104,0,[0,15,0,0,24]],"bLiveWin":1,"rcdOvr":{"res":0},"desktopRect":{"x":0,"y":15,"width":0,"height":0},"iDisplay":1,"sndFile":"","hasEvents":1,"supportsEvents":true,"linkName":"media/Matthew_text_1741749379715.mp3","initHidden":false,"hasCaptions":false,"cssSkin":"trivantis-player.css","flashStreamer":"","bShowCCBackground":false,"ccBackgroundColor":"#000000","ccBackgroundOpacity":100,"speedCtrl":false,"hexToRgba":"rgba(0,0,0,1)","ccBackgroundColorZeroOpacity":"rgba(0,0,0,0)","skinHeight":24}
+	objData:	{"a":[0,131104,0,[0,15,0,0,24]],"bLiveWin":1,"rcdOvr":{"res":0},"desktopRect":{"x":0,"y":15,"width":0,"height":0},"iDisplay":1,"sndFile":"","hasEvents":1,"supportsEvents":true,"linkName":"media/Matthew_text_1741749379715.mp3","initHidden":false,"hasCaptions":false,"cssSkin":"trivantis-player.css","flashStreamer":"","bShowCCBackground":false,"ccBackgroundColor":"#000000","ccBackgroundOpacity":100,"speedCtrl":false,"hexToRgba":"rgba(0,0,0,1)","ccBackgroundColorZeroOpacity":"rgba(0,0,0,0)","bPooled":true,"skinHeight":24}
 };
 og876.rcdData.att_Desktop = 
 {

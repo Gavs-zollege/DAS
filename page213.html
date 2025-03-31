@@ -13,6 +13,7 @@
 
 <link rel="stylesheet" href="trivantisPage.css" type="text/css" />
 <link rel="stylesheet" href="trivantis-common.css" type="text/css" />
+<link rel="stylesheet" href="trivantis-dialog.css" type="text/css" />
 <link rel="stylesheet" href="trivantis-player.css" type="text/css" />
 <link rel="stylesheet" href="speed.css" type="text/css" />
 <link rel="stylesheet" href="MediaPlayer/trivantis-nemesis-skin.css" type="text/css" />
@@ -28,12 +29,16 @@
 <script type='text/javascript' src='trivantis-wndobj.js'></script>
 <script type='text/javascript' src='speed.js'></script>
 <script type='text/javascript' src='trivantis-buttontracking.js'></script>
+<script type='text/javascript' src='apiwrapper11.js'></script>
+<script type='text/javascript' src='scofunctions.js'></script>
+<script type='text/javascript' src='aria-utils.js'></script>
+<script type='text/javascript' src='trivantis-dialog.js'></script>
 <script type='text/javascript' src='trivantis-strings.js'></script>
 <script type='text/javascript' src='hammer.js'></script>
 <script>
 
 // <!-- 
-if(findOPAWindow()==n && !isNewWinPopup()) location.href = "week1?jmptopg=page213.html";
+if(findOPAWindow()==n && !isNewWinPopup()) location.href = "index.html?jmptopg=page213.html";
 
 var hmr = n;
 var swipeLeft = function() {};
@@ -56,8 +61,11 @@ function initGEV(state, swipeLeft, swipeRight) {
 if ( !is.min )
 	document.write("Your browser does not support dynamic html. Please download a current version of either <a href='http://www.microsoft.com/ie/'>Microsoft Internet Explorer or Edge</a> or <a href='http://www.apple.com/safari/download/'>Safari</a> or <a href='http://www.mozilla.com/firefox/'>Mozilla Firefox</a> and try visiting our site again. Thank You.<br/><br/>")
 
+var bInitSCORM = loadPage()
+var startDate = readVariable('TrivantisSCORMTimer', 0)
 
 var VarClickCount = new Variable( 'VarClickCount', '0', 0, 0, null, null, '', f );
+var AICC_Lesson_Location = new Variable( 'AICC_Lesson_Location', '0', 0, 0, 'scorm', null, ''  );
 var VarTriMuteAllFLV = new Variable( 'VarTriMuteAllFLV', '', 0, 0, null, null, ''  );
 var bRcdTitle = true;
 var pgWidth_phonePort = 480;
@@ -82,6 +90,23 @@ function init_page()
 {
 	if ( is.min )
 	{
+		if( parent.document != document) parent.document.title=document.title
+		if( bInitSCORM )
+		{
+		  var oldLoc = AICC_Lesson_Location.getValue()
+		  if( oldLoc && oldLoc.indexOf( '.' ) > 0 && oldLoc != 'page213.html' && oldLoc != 'A001index.html' )
+		  {
+		    var bmCallback = function(go){
+		      if(go){
+		       saveVariable( 'TrivantisEPS', 'T');
+		       ObjLayerActionGoTo( oldLoc );
+		    }};
+		    var mbconf = new jsTrivDlgMsgBox( 'prevLocation213', 'DAP Week 1','You have previously been in this lesson. Would you like to return to the last visited location in the lesson?', 1, function(e,rtn){ bmCallback(rtn==0)} ); mbconf.create();
+		  }
+		}
+
+		if( window.name.indexOf( 'Trivantis_' ) == -1 )
+		  AICC_Lesson_Location.set( 'page213.html' )
 		triv$(getDisplayWindow()).scroll(function(e) { onWindowScroll(e); });
 		triv$(getDisplayWindow()).resize(function(e) { onWindowScroll(e); });
 		trivCenterPage = true;
@@ -110,7 +135,15 @@ function init_page()
 		trivPage.actionMute();
 	}
 }
+
+function finish() {
+    if (window.finishCalled) return;
+    window.finishCalled = true;
+    unloadPage(true,'')
+}
+
 var theWin = (window.myTop || window);
+theWin.onbeforeunload = function(){ if (readVariable('TrivantisEPS', 'F') != 'T' && !theWin.noPromptOnUnload ) return ''; finish();};
 if (theWin.pagehideHandler)
     theWin.removeEventListener('pagehide', theWin.pagehideHandler);
 theWin.pagehideHandler = function(ev) { finish(); }

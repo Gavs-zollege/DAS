@@ -26,10 +26,11 @@
 <script type='text/javascript' src='trivantis-cookie.js'></script>
 <script type='text/javascript' src='trivantis-timedate.js'></script>
 <script type='text/javascript' src='trivantis-trans.js'></script>
-<script type='text/javascript' src='trivantis-titlemgr.js'></script>
 <script type='text/javascript' src='trivantis-wndobj.js'></script>
 <script type='text/javascript' src='speed.js'></script>
 <script type='text/javascript' src='trivantis-buttontracking.js'></script>
+<script type='text/javascript' src='apiwrapper11.js'></script>
+<script type='text/javascript' src='scofunctions.js'></script>
 <script type='text/javascript' src='aria-utils.js'></script>
 <script type='text/javascript' src='trivantis-dialog.js'></script>
 <script type='text/javascript' src='trivantis-strings.js'></script>
@@ -37,7 +38,7 @@
 <script>
 
 // <!-- 
-if(findOPAWindow()==n && !isNewWinPopup()) location.href = "week1?jmptopg=page7271.html";
+if(findOPAWindow()==n && !isNewWinPopup()) location.href = "index.html?jmptopg=page7271.html";
 
 var hmr = n;
 var swipeLeft = function() {};
@@ -60,13 +61,17 @@ function initGEV(state, swipeLeft, swipeRight) {
 if ( !is.min )
 	document.write("Your browser does not support dynamic html. Please download a current version of either <a href='http://www.microsoft.com/ie/'>Microsoft Internet Explorer or Edge</a> or <a href='http://www.apple.com/safari/download/'>Safari</a> or <a href='http://www.mozilla.com/firefox/'>Mozilla Firefox</a> and try visiting our site again. Thank You.<br/><br/>")
 
-var Test_1_Score = new Variable( 'Test_1_Score', '0', 0, 0, null, null, ''  );
+var bInitSCORM = loadPage()
+var startDate = readVariable('TrivantisSCORMTimer', 0)
+var Test_1_Score = new Variable( 'Test_1_Score', '0', 0, 0, 'scorm', 365, ''  );
 var VarQuestion_7140 = new Variable( 'VarQuestion_7140', '', 0, 0, null, null, '', f );
 var VarQuestion_7154 = new Variable( 'VarQuestion_7154', '', 0, 0, null, null, '', f );
 var VarQuestion_7169 = new Variable( 'VarQuestion_7169', '', 0, 0, null, null, '', f );
 var VarQuestion_7239 = new Variable( 'VarQuestion_7239', '', 0, 0, null, null, '', f );
 var VarQuestion_7254 = new Variable( 'VarQuestion_7254', '', 0, 0, null, null, '', f );
-var AICC_Score = new Variable( 'AICC_Score', '0', 0, 0, null, null, '', f );
+var AICC_Student_Name = new Variable( 'AICC_Student_Name', '0', 0, 0, 'scorm', null, ''  );
+var AICC_Lesson_Location = new Variable( 'AICC_Lesson_Location', '0', 0, 0, 'scorm', null, ''  );
+var AICC_Score = new Variable( 'AICC_Score', '0', 0, 0, 'scorm', null, ''  );
 var VarTriMuteAllFLV = new Variable( 'VarTriMuteAllFLV', '', 0, 0, null, null, ''  );
 Test_1_Score.getValue();
 VarQuestion_7140.getValue();
@@ -74,6 +79,8 @@ VarQuestion_7154.getValue();
 VarQuestion_7169.getValue();
 VarQuestion_7239.getValue();
 VarQuestion_7254.getValue();
+AICC_Student_Name.getValue();
+AICC_Lesson_Location.getValue();
 AICC_Score.getValue();
 var bRcdTitle = true;
 var pgWidth_phonePort = 480;
@@ -105,6 +112,23 @@ function init_page()
 		    if( gotoPage ) trivExitPage( gotoPage, false )
 		  }
 		}
+		if( parent.document != document) parent.document.title=document.title
+		if( bInitSCORM )
+		{
+		  var oldLoc = AICC_Lesson_Location.getValue()
+		  if( oldLoc && oldLoc.indexOf( '.' ) > 0 && oldLoc != 'page7271.html' && oldLoc != 'A001index.html' )
+		  {
+		    var bmCallback = function(go){
+		      if(go){
+		       saveVariable( 'TrivantisEPS', 'T');
+		       ObjLayerActionGoTo( oldLoc );
+		    }};
+		    var mbconf = new jsTrivDlgMsgBox( 'prevLocation7271', 'DAP Week 1','You have previously been in this lesson. Would you like to return to the last visited location in the lesson?', 1, function(e,rtn){ bmCallback(rtn==0)} ); mbconf.create();
+		  }
+		}
+
+		if( window.name.indexOf( 'Trivantis_' ) == -1 )
+		  AICC_Lesson_Location.set( 'page7271.html' )
 		triv$(getDisplayWindow()).scroll(function(e) { onWindowScroll(e); });
 		triv$(getDisplayWindow()).resize(function(e) { onWindowScroll(e); });
 		trivCenterPage = true;
@@ -121,7 +145,15 @@ function init_page()
 		trivPage.actionMute();
 	}
 }
+
+function finish() {
+    if (window.finishCalled) return;
+    window.finishCalled = true;
+    unloadPage(true,'')
+}
+
 var theWin = (window.myTop || window);
+theWin.onbeforeunload = function(){ if (readVariable('TrivantisEPS', 'F') != 'T' && !theWin.noPromptOnUnload ) return ''; finish();};
 if (theWin.pagehideHandler)
     theWin.removeEventListener('pagehide', theWin.pagehideHandler);
 theWin.pagehideHandler = function(ev) { finish(); }

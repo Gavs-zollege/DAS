@@ -25,7 +25,7 @@ tts_audio6265.rcdData.att_TabletLandscape =
 	stdHtml:	'<div id="sndSpacers" ></div><audio id="swftobj6265" name="swftobj6265" width="100%" height="100%" controls="controls" preload="none"><source type="audio/mpeg" src="media/Matthew_text_1741749379715.mp3" /></audio>',
 	iosHtml:	'undefined',
 	resource:	'media/Matthew_text_1741749379715.mp3',
-	arEvents:	[{name:'Event 1', value:'4700',proc:false,actItem:function(){{cleanupTitle(''); trivExitPage('ObjLayerActionExit()',false);} 
+	arEvents:	[{name:'Event 1', value:'4700',proc:false,actItem:function(){{trivScormQuit(true, '', true);} 
 		if ( typeof pF == 'function' ) pF();}}],
 	cwObj:		{
 		"name":	"Matthew_text_1741749379715"
